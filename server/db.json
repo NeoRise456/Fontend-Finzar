@@ -1,0 +1,194 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "Food"
+    },
+    {
+      "id": 2,
+      "name": "Bills"
+    },
+    {
+      "id": 3,
+      "name": "Salary"
+    },
+    {
+      "id": 4,
+      "name": "Emergency"
+    },
+    {
+      "id": 5,
+      "name": "Entertainment"
+    }
+  ],
+  "recurrents": [
+    {
+      "id": 1,
+      "name": "Daily"
+    },
+    {
+      "id": 2,
+      "name": "Weekly"
+    },
+    {
+      "id": 3,
+      "name": "Monthly"
+    },
+    {
+      "id": 4,
+      "name": "Yearly"
+    },
+    {
+      "id": 5,
+      "name": "Once"
+    },
+    {
+      "id": 6,
+      "name": "Every 6 months"
+    }
+  ],
+  "transaction_types": [
+    {
+      "id": 1,
+      "name": "earning"
+    },
+    {
+      "id": 2,
+      "name": "expense"
+    },
+    {
+      "id": 3,
+      "name": "transfer"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "email": "sample@sample.com",
+      "password": "admin"
+    }
+  ],
+  "wallets": [
+    {
+      "id": 312,
+      "userId": 1,
+      "name": "Cash Wallet",
+      "balance": 2000,
+      "total_balance": 2000
+    }
+  ],
+  "earnings": [
+    {
+      "id": 345,
+      "walletId": 312,
+      "amount": 2000,
+      "category_id": 3,
+      "note": "chamba",
+      "date": "2024-09-01",
+      "recurrent_id": 3
+    }
+  ],
+  "expenses": [
+    {
+      "id": 453,
+      "walletId": 312,
+      "amount": 20,
+      "category_id": 1,
+      "note": "mi menu diario",
+      "date": "2024-09-05",
+      "recurrent_id": 1
+    },
+    {
+      "id": 454,
+      "walletId": 312,
+      "amount": 150,
+      "category_id": 2,
+      "note": "Factura de luz",
+      "date": "2024-09-01",
+      "recurrent_id": 3
+    }
+  ],
+  "savings": [
+    {
+      "id": 32,
+      "walletId": 312,
+      "name": "Emergencia",
+      "total_goal": 1000,
+      "current_goal": 100,
+      "current_amount": 600,
+      "category_id": 4,
+      "recurring_id": 3,
+      "start_date": "2024-08-01"
+    },
+    {
+      "id": 33,
+      "walletId": 312,
+      "name": "Viaje",
+      "total_goal": 2000,
+      "current_goal": 20,
+      "current_amount": 1000,
+      "category_id": 5,
+      "recurring_id": 2,
+      "start_date": "2024-09-01"
+    }
+  ],
+  "budgets": [
+    {
+      "id": 23,
+      "walletId": 312,
+      "category_id": 1,
+      "max_amount": 600,
+      "spended_amount": 200,
+      "start_date": "2024-09-05",
+      "recurring_id": 3
+    }
+  ],
+  "transactions": [
+    {
+      "id": 1,
+      "transaction_type_id": 1,
+      "wallet_id": 312,
+      "amount": 2000,
+      "date": "2024-07-01",
+      "note": "Salario de julio",
+      "category_id": 3
+    },
+    {
+      "id": 2,
+      "transaction_type_id": 1,
+      "wallet_id": 312,
+      "amount": 2000,
+      "date": "2024-08-01",
+      "note": "Salario de agosto",
+      "category_id": 3
+    },
+    {
+      "id": 3,
+      "transaction_type_id": 1,
+      "wallet_id": 312,
+      "amount": 2000,
+      "date": "2024-09-01",
+      "note": "Salario de septiembre",
+      "category_id": 3
+    },
+    {
+      "id": 4,
+      "transaction_type_id": 2,
+      "wallet_id": 312,
+      "amount": 50,
+      "date": "2024-09-10",
+      "note": "Salida al cine",
+      "category_id": 5
+    },
+    {
+      "id": 5,
+      "transaction_type_id": 2,
+      "wallet_id": 312,
+      "amount": 100,
+      "date": "2024-09-15",
+      "note": "Visita al hospital de emergencia",
+      "category_id": 4
+    }
+  ]
+}
