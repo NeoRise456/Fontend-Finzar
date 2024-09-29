@@ -1,0 +1,22 @@
+<mat-card appearance="outlined" style="display: inline-block; padding: 0.5rem;" class="wallet-item"
+          [routerLink]="['/wallet', wallet.id]" >
+  <div style="display: flex">
+    <mat-icon fontIcon="account_balance_wallet" style="margin: 2rem 1rem;"></mat-icon>
+    <div>
+      <mat-card-header>
+        <mat-card-title> {{ wallet.name}}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        @if (wallet.balance > 0) {
+          <p> + {{ wallet.balance }} PEN</p>
+        }
+        @else{
+          <p> - {{ wallet.balance }} PEN</p>
+        }
+      </mat-card-content>
+    </div>
+  </div>
+</mat-card>
+
+
+
