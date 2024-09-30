@@ -3,6 +3,7 @@ import { environment } from "../../../environments/environment";
 import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
 import { catchError, Observable, throwError } from "rxjs";
 import {Wallet} from "../../wallet/models/wallet.entity";
+import {Categories} from "../models/categories.entity";
 
 @Injectable({
   providedIn: 'root'

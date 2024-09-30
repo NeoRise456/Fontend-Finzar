@@ -1,9 +1,10 @@
-<div style=" margin: 2rem 24rem; ">
+<div style=" margin: 2rem 24rem;">
   <div style="margin: 1rem">
     <h2> Wallets </h2>
     <app-wallet-list [wallets]="userWallets"/>
   </div>
   <div style="margin: 1rem">
     <h2> Overview </h2>
+    <app-wallet-analytics [wallets]="userWallets" />
   </div>
 </div>

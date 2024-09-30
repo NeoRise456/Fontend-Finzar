@@ -1,5 +1,5 @@
 {
-  "earnings_categories": [
+  "categories": [
     {
       "id": 1,
       "name": "Salary"
@@ -19,9 +19,7 @@
     {
       "id": 5,
       "name": "Other"
-    }
-  ],
-  "expenses_categories": [
+    },
     {
       "id": 1,
       "name": "Food"
