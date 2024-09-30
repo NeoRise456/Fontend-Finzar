@@ -3,6 +3,7 @@ import {PeriodFilterComponent} from "../../../shared/components/period-filter/pe
 import {DashboardFiltersComponent} from "../dashboard-filters/dashboard-filters.component";
 import {Wallet} from "../../models/wallet.entity";
 import {BalanceDisplayComponent} from "../balance-display/balance-display.component";
+import {BalanceChangeDisplayComponent} from "../balance-change-display/balance-change-display.component";
 
 @Component({
   selector: 'app-wallet-analytics',
@@ -10,7 +11,8 @@ import {BalanceDisplayComponent} from "../balance-display/balance-display.compon
   imports: [
     PeriodFilterComponent,
     DashboardFiltersComponent,
-    BalanceDisplayComponent
+    BalanceDisplayComponent,
+    BalanceChangeDisplayComponent
   ],
   templateUrl: './dashboard-analytics.component.html',
   styleUrl: './dashboard-analytics.component.css'

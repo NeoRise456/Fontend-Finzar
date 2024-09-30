@@ -1,0 +1,18 @@
+<mat-card style=" padding: 1rem">
+  <mat-card-title>
+    <h2>Balance Over Time</h2>
+  </mat-card-title>
+  <mat-card-content style="min-height: 200px">
+    <ngx-charts-line-chart
+      [scheme]="colorScheme"
+      [results]="data"
+      [xAxis]="showXAxis"
+      [yAxis]="showYAxis"
+      [showXAxisLabel]="showXAxisLabel"
+      [showYAxisLabel]="showYAxisLabel"
+      [xAxisLabel]="xAxisLabel"
+      [yAxisLabel]="yAxisLabel"
+      [autoScale]="true">
+    </ngx-charts-line-chart>
+  </mat-card-content>
+</mat-card>
