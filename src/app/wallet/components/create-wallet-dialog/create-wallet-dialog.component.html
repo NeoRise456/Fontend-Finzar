@@ -1,0 +1,45 @@
+<h2 mat-dialog-title>Add Wallet</h2>
+
+<mat-dialog-content>
+  <mat-form-field appearance="fill" style="margin: 0.5rem 1rem">
+    <mat-label>Wallet Name</mat-label>
+    <input
+      matInput
+      required
+      [(ngModel)]="walletName"
+      name="walletName"
+      #walletNameInput="ngModel"
+    />
+    <mat-error *ngIf="walletNameInput.invalid && walletNameInput.touched">
+      Wallet name is required
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Initial Balance</mat-label>
+    <span matTextPrefix>$&nbsp;</span>
+    <input
+      matInput
+      type="number"
+      required
+      [(ngModel)]="initialBalance"
+      name="initialBalance"
+      #balanceInput="ngModel"
+    />
+    <mat-error *ngIf="balanceInput.invalid && balanceInput.touched">
+      Initial balance is required
+    </mat-error>
+  </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button (click)="close()">Close</button>
+  <!-- Add Wallet button is disabled unless both inputs are valid -->
+  <button
+    mat-button
+    (click)="onSubmit()"
+    [disabled]="!walletName || initialBalance <= 0"
+  >
+    Add Wallet
+  </button>
+</mat-dialog-actions>

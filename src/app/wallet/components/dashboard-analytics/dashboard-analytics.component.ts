@@ -3,16 +3,20 @@ import {PeriodFilterComponent} from "../../../shared/components/period-filter/pe
 import {DashboardFiltersComponent} from "../dashboard-filters/dashboard-filters.component";
 import {Wallet} from "../../models/wallet.entity";
 import {BalanceDisplayComponent} from "../balance-display/balance-display.component";
-import {BalanceChangeDisplayComponent} from "../balance-change-display/balance-change-display.component";
+import {BalanceLineChangeDisplayComponent} from "../balance-line-change-display/balance-line-change-display.component";
+import {BalanceBarChangeDisplayComponent} from "../balance-bar-change-display/balance-bar-change-display.component";
+import {BalancePiechartComponent} from "../balance-piechart/balance-piechart.component";
 
 @Component({
-  selector: 'app-wallet-analytics',
+  selector: 'app-dashboard-analytics',
   standalone: true,
   imports: [
     PeriodFilterComponent,
     DashboardFiltersComponent,
     BalanceDisplayComponent,
-    BalanceChangeDisplayComponent
+    BalanceLineChangeDisplayComponent,
+    BalanceBarChangeDisplayComponent,
+    BalancePiechartComponent
   ],
   templateUrl: './dashboard-analytics.component.html',
   styleUrl: './dashboard-analytics.component.css'
@@ -24,7 +28,9 @@ export class DashboardAnalyticsComponent {
     'Total Balance',
     'Total Period Change',
     'Total Period Expenses',
-    'Total Period Income'
+    'Total Period Income',
+    'Period Income',
+    'Period Expenses'
   ];
 
   balances = [

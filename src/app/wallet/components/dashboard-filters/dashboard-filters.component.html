@@ -1,8 +1,9 @@
 <div [formGroup]="dashboardForms">
   <mat-card>
-    <mat-card-header>
+    <mat-card-header style="display: flex; justify-content: space-between">
       <mat-card-title>Filters</mat-card-title>
-      <div>
+      <div style=" display:flex ;gap: 1rem">
+        <button mat-raised-button style="background-color: lightskyblue;"> Filter </button>
         <button mat-raised-button (click)="resetFilters()">Reset filters</button>
       </div>
     </mat-card-header>

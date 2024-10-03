@@ -104,6 +104,13 @@
       "name": "Cash Wallet",
       "balance": 2000,
       "total_balance": 2000
+    },
+    {
+      "id": 9907,
+      "userId": 1,
+      "name": "test",
+      "balance": 123,
+      "total_balance": 123
     }
   ],
   "earnings": [

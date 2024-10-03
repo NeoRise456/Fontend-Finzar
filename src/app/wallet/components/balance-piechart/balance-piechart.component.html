@@ -1,0 +1,14 @@
+<mat-card style=" padding: 1rem">
+  <mat-card-title>
+    <h2> {{ title }}</h2>
+  </mat-card-title>
+  <mat-card-content style="min-height: 400px">
+    <ngx-charts-pie-chart
+      [scheme]="colorScheme"
+      [results]="data"
+      [legend]="showLegend"
+      [labels]="true">
+    </ngx-charts-pie-chart>
+  </mat-card-content>
+</mat-card>
+

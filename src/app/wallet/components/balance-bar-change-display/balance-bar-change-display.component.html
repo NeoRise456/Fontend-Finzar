@@ -1,0 +1,20 @@
+<mat-card style=" padding: 1rem">
+  <mat-card-title>
+    <h2>Balance Changes</h2>
+  </mat-card-title>
+  <mat-card-content style="min-height: 400px">
+    <ngx-charts-bar-vertical-2d
+      [scheme]="colorScheme"
+      [results]="data"
+      [xAxis]="showXAxis"
+      [yAxis]="showYAxis"
+      [legend]="showLegend"
+      [showXAxisLabel]="showXAxisLabel"
+      [showYAxisLabel]="showYAxisLabel"
+      [xAxisLabel]="xAxisLabel"
+      [yAxisLabel]="yAxisLabel"
+      [groupPadding]="0.2"
+      [barPadding]="0.1">
+    </ngx-charts-bar-vertical-2d>
+  </mat-card-content>
+</mat-card>

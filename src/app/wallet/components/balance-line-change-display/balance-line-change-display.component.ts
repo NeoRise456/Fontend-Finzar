@@ -3,13 +3,13 @@ import { MatCardModule } from '@angular/material/card';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 @Component({
-  selector: 'app-balance-change-display',
+  selector: 'app-balance-line-change-display',
   standalone: true,
   imports: [MatCardModule, NgxChartsModule],
-  templateUrl: './balance-change-display.component.html',
-  styleUrls: ['./balance-change-display.component.css']
+  templateUrl: './balance-line-change-display.component.html',
+  styleUrls: ['./balance-line-change-display.component.css']
 })
-export class BalanceChangeDisplayComponent {
+export class BalanceLineChangeDisplayComponent {
 
   data = [
     {
