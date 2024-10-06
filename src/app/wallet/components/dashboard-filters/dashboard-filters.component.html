@@ -7,9 +7,10 @@
         <button mat-raised-button (click)="resetFilters()">Reset filters</button>
       </div>
     </mat-card-header>
-    <mat-card-actions>
-      <form class="filters-form" [formGroup]="dashboardForms"> <!-- Add formGroup here -->
-        <div class="filter-options">
+
+    <mat-card-actions >
+      <form [formGroup]="dashboardForms"> <!-- Add formGroup here -->
+        <div style="display: flex;gap: 1rem; margin: 0rem 1rem">
           <mat-form-field appearance="fill">
             <mat-label>By wallet</mat-label>
             <mat-select formControlName="wallet">

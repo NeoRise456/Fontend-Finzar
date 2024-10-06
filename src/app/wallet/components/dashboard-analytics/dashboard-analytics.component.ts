@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {PeriodFilterComponent} from "../../../shared/components/period-filter/period-filter.component";
+import {PeriodFilterComponent} from "../../../public/components/period-filter/period-filter.component";
 import {DashboardFiltersComponent} from "../dashboard-filters/dashboard-filters.component";
 import {Wallet} from "../../models/wallet.entity";
 import {BalanceDisplayComponent} from "../balance-display/balance-display.component";

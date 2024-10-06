@@ -1,0 +1,23 @@
+<header>
+  <mat-toolbar>
+    <span>Finzar</span>
+    <span style="flex: 1 1 auto"></span>
+    <div>
+      <button mat-button routerLink="/wallets">Wallets</button>
+      <button mat-button routerLink="/budgets">Budgets</button>
+      <button mat-button routerLink="/savings">Savings</button>
+    </div>
+    <span style="flex: 1 1 auto"></span>
+    <button mat-button [matMenuTriggerFor]="user">
+      <span style="display: flex; align-items: center; justify-content: space-between; width: 100%">
+        <mat-icon>person</mat-icon>
+        <span class="user-text">User</span>
+      </span>
+    </button>
+    <mat-menu #user="matMenu">
+      <button mat-menu-item>Settings</button>
+      <button mat-menu-item>Support</button>
+      <button mat-menu-item>Logout</button>
+    </mat-menu>
+  </mat-toolbar>
+</header>
