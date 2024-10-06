@@ -142,34 +142,37 @@
       "id": 32,
       "userId": 1,
       "name": "Emergencia",
-      "total_goal": 1000,
-      "current_goal": 100,
-      "current_amount": 600,
-      "category_id": 4,
-      "recurring_id": 3,
-      "start_date": "2024-08-01"
+      "totalGoal": 1000,
+      "currentGoal": 100,
+      "currentAmount": 600,
+      "categoryId": 4,
+      "recurringId": 3,
+      "startDate": "2024-08-01",
+      "endDate": "2024-12-01"
     },
     {
       "id": 33,
       "userId": 1,
       "name": "Viaje",
-      "total_goal": 2000,
-      "current_goal": 20,
-      "current_amount": 1000,
-      "category_id": 5,
-      "recurring_id": 2,
-      "start_date": "2024-09-01"
+      "totalGoal": 2000,
+      "currentGoal": 20,
+      "currentAmount": 1000,
+      "categoryId": 5,
+      "recurringId": 2,
+      "startDate": "2024-09-01",
+      "endDate": "2024-12-01"
     }
   ],
   "budgets": [
     {
       "id": 23,
       "userId": 1,
-      "category_id": 1,
-      "max_amount": 600,
-      "spended_amount": 200,
-      "start_date": "2024-09-05",
-      "recurring_id": 3
+      "categoryId": 1,
+      "maxAmount": 600,
+      "spendedAmount": 200,
+      "startDate": "2024-09-05",
+      "recurringId": 3,
+      "endDate": "2024-09-30"
     }
   ],
   "transactions": [

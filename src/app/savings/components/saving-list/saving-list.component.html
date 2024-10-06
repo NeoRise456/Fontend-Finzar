@@ -1,1 +1,15 @@
-<p>saving-list works!</p>
+<div style="display:flex; gap: 2rem;">
+  <app-saving-item
+    *ngFor="let saving of savings"
+    [saving]="saving"
+    />
+
+
+  <mat-card appearance="outlined" class="add-item">
+    <mat-card-content style="padding: 0.2rem; display: flex; justify-content: center; align-items: center; height: 100%;">
+      <div>
+        <mat-icon fontIcon="add"/>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

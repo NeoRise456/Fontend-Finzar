@@ -16,7 +16,7 @@ export class BaseService<T> {
     })
   }
 
-  constructor(private http: HttpClient) { }
+  constructor(protected http: HttpClient) { }
 
   handleError(error: HttpErrorResponse) {
     // Default error handling
@@ -65,6 +65,7 @@ export class BaseService<T> {
     return this.http.get<T>(`${this.basePath}/savings?walletId=${walletId}`, this.httpOptions)
       .pipe(catchError(this.handleError));
   }
+
 
   // Get Wallet Budgets
   getWalletBudgets(walletId: any): Observable<T> {
