@@ -1,0 +1,40 @@
+<h1 mat-dialog-title>Add New Savings Goal</h1>
+
+<mat-dialog-content>
+  <div>
+    <h6>General Info</h6>
+    <div style="display:flex; gap: 2rem">
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>Goal Name</mat-label>
+          <input matInput placeholder="Goal Name" required [(ngModel)]="newSaving.name">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>Goal</mat-label>
+          <input matInput placeholder="Amount" type="number" required [(ngModel)]="newSaving.totalGoal">
+        </mat-form-field>
+      </div>
+    </div>
+    <h6>Saving Category</h6>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>By category</mat-label>
+        <mat-select [(ngModel)]="newSaving.categoryId">
+          <mat-option *ngFor="let category of categories" [value]="category.id">
+            {{ category.name }}
+          </mat-option >
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+
+
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button (click)="onSubmit()">Save</button>
+  <button mat-button (click)="onClose()">Cancel</button>
+</mat-dialog-actions>
