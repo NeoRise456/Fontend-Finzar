@@ -15,4 +15,17 @@ export class SavingApiService extends BaseService<Saving> {
       .pipe(catchError(this.handleError));
   }
 
+  //create saving
+  createSaving(saving: Saving) {
+    return this.http.post<Saving>(`${this.basePath}${this.resourceEndpoint}`, saving, this.httpOptions)
+      .pipe(catchError(this.handleError));
+  }
+
+  //update saving
+  updateSaving(saving: Saving) {
+    return this.http.put<Saving>(`${this.basePath}${this.resourceEndpoint}`, saving, this.httpOptions)
+      .pipe(catchError(this.handleError));
+  }
+
+
 }
