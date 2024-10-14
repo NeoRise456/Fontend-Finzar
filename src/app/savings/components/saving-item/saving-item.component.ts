@@ -14,9 +14,13 @@ import {RouterLink} from "@angular/router";
 })
 export class SavingItemComponent {
   @Input() saving!: Saving;
+  tosave!: number;
   percentage!: number;
 
   ngOnInit() {
     this.percentage = (this.saving.currentAmount / this.saving.totalGoal) * 100;
+    this.tosave = this.saving.totalGoal - this.saving.currentAmount;
   }
+
+
 }

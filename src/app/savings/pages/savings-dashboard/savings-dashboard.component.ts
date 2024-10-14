@@ -27,4 +27,10 @@ export class SavingsDashboardComponent {
     });
   }
 
+  onSavingCreated(newSaving: Saving) {
+    this.savingApiService.createSaving(newSaving).subscribe((saving: Saving) => {
+      this.savings.push(saving);
+    });
+  }
+
 }
