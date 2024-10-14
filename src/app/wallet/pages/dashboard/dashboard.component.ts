@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {BaseService} from "../../../shared/services/base.service.service";
-import {Wallet} from "../../models/wallet.entity";
+import {Wallet} from "../../model/wallet.entity";
 import {WalletListComponent} from "../../components/wallet-list/wallet-list.component";
 import {DashboardAnalyticsComponent} from "../../components/dashboard-analytics/dashboard-analytics.component";
 

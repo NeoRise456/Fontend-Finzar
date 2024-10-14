@@ -1,7 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {PeriodFilterComponent} from "../../../public/components/period-filter/period-filter.component";
 import {DashboardFiltersComponent} from "../dashboard-filters/dashboard-filters.component";
-import {Wallet} from "../../models/wallet.entity";
+import {Wallet} from "../../model/wallet.entity";
 import {BalanceDisplayComponent} from "../balance-display/balance-display.component";
 import {BalanceLineChangeDisplayComponent} from "../balance-line-change-display/balance-line-change-display.component";
 import {BalanceBarChangeDisplayComponent} from "../balance-bar-change-display/balance-bar-change-display.component";

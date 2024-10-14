@@ -5,10 +5,12 @@ import {FormBuilder, FormControl, FormGroup, ReactiveFormsModule} from "@angular
 import {MatSelectModule} from "@angular/material/select";
 import {MatButtonModule} from "@angular/material/button";
 import {NgForOf} from "@angular/common";
-import {Wallet} from "../../models/wallet.entity";
+import {Wallet} from "../../model/wallet.entity";
 import {MatInputModule} from "@angular/material/input";
 import { MatNativeDateModule } from '@angular/material/core';
 import {
+  MatDatepicker,
+  MatDatepickerInput,
   MatDatepickerToggle,
   MatDateRangeInput,
   MatDateRangePicker,
@@ -19,7 +21,7 @@ import {
 @Component({
   selector: 'app-wallet-filters',
   standalone: true,
-  imports: [MatCardModule, MatFormFieldModule, ReactiveFormsModule, MatSelectModule, NgForOf, MatButtonModule, MatInputModule, MatDateRangeInput, MatDateRangePicker, MatDatepickerToggle, MatEndDate, MatStartDate,MatNativeDateModule],
+  imports: [MatCardModule, MatFormFieldModule, ReactiveFormsModule, MatSelectModule, NgForOf, MatButtonModule, MatInputModule, MatDateRangeInput, MatDateRangePicker, MatDatepickerToggle, MatEndDate, MatStartDate, MatNativeDateModule, MatDatepickerInput, MatDatepicker],
   templateUrl: './dashboard-filters.component.html',
   styleUrl: './dashboard-filters.component.css'
 })
