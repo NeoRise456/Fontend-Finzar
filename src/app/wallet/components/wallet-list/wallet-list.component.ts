@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {Wallet} from "../../models/wallet.entity";
+import {Wallet} from "../../model/wallet.entity";
 import {WalletItemComponent} from "../wallet-item/wallet-item.component";
 import {NgForOf} from "@angular/common";
 import {MatCardModule} from "@angular/material/card";

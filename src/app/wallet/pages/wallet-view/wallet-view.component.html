@@ -1,1 +1,45 @@
-<p>wallet-view works!</p>
+<div style="margin: 4rem 24rem;">
+  <div style="display: flex; justify-content: space-between">
+    <h1> Titulo Wallet </h1>
+    <div style="display: flex; gap: 1rem">
+      <button mat-raised-button> Edit Wallet
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-raised-button color="warn"> Delete Wallet
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div>
+    <button mat-raised-button> Add Transaction
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+  <div>
+    <mat-card>
+      <mat-card-title> Filters </mat-card-title>
+    </mat-card>
+  </div>
+  <div>
+    <div style="margin: 1rem;">
+      <div style="display: flex; width: 100%; justify-content: space-between;">
+        <app-balance-display [balance]="balances[0]" [title]="titles[0]" />
+        <app-balance-display [balance]="balances[1]" [title]="titles[1]" />
+        <app-balance-display [balance]="balances[2]" [title]="titles[2]" />
+        <app-balance-display [balance]="balances[3]" [title]="titles[3]" />
+      </div>
+    </div>
+  </div>
+  <div>
+    <mat-card>
+      <mat-card-title> Cash Flow </mat-card-title>
+      <mat-card-content>
+        <mat-checkbox >Check me!</mat-checkbox>
+      </mat-card-content>
+    </mat-card>
+
+  </div>
+
+
+
+</div>
