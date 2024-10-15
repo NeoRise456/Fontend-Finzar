@@ -1,4 +1,6 @@
 
+
+
 export class Earning {
   id: number;
   walletId: number;
