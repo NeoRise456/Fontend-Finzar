@@ -7,6 +7,8 @@ export class Saving {
   totalGoal: number ;
   currentAmount: number;
   categoryId: number;
+  startDate: Date;
+  endDate: Date;
   constructor(
     id = 0,
     userId = 0,
@@ -14,7 +16,8 @@ export class Saving {
     totalGoal = 0,
     currentAmount = 0,
     categoryId = 0,
-    recurringId = 0,
+    startDate = new Date(),
+    endDate = new Date()
   ) {
     this.id = id;
     this.userId = userId;
@@ -22,5 +25,7 @@ export class Saving {
     this.totalGoal = totalGoal;
     this.currentAmount = currentAmount;
     this.categoryId = categoryId;
+    this.startDate = startDate;
+    this.endDate = endDate;
   }
 }
