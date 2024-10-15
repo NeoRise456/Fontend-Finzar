@@ -1,1 +1,41 @@
-<p>savings-detail works!</p>
+
+<div style=" margin: 4rem 24rem; ">
+  <div style="display: flex; justify-content: space-between">
+    <h1> Titulo Saving </h1>
+    <div style="display: flex; gap: 1rem">
+      <button mat-raised-button> Edit Saving
+        <mat-icon>edit</mat-icon>
+      </button>
+
+      <button mat-raised-button color="warn"> Delete Saving
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div style="margin: 1rem;">
+    <div style="display: flex; width: 100%; justify-content: space-between;">
+      <app-balance-display [balance]="balances[0]" [title]="titles[0]" />
+      <app-balance-display [balance]="balances[1]" [title]="titles[1]" />
+      <app-balance-display [balance]="balances[2]" [title]="titles[2]" />
+      <app-balance-display [balance]="balances[3]" [title]="titles[3]" />
+    </div>
+  </div>
+  <div style="margin: 1rem;">
+    <mat-card>
+      <mat-card-title> Saving Progress </mat-card-title>
+      <mat-card-content>
+        monsesaso
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div style="margin: 1rem;">
+    <app-balance-piechart style="width: 49%;" [title]="titles[4]"/>
+  </div>
+
+  <div style="margin: 1rem;">
+    <p> tabla de transacciones de solo saving</p>
+  </div>
+
+</div>
+
