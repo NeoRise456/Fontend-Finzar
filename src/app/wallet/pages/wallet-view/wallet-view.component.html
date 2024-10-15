@@ -1,6 +1,6 @@
 <div style="margin: 4rem 24rem;">
   <div style="display: flex; justify-content: space-between">
-    <h1> Titulo Wallet </h1>
+    <h1> {{ wallet.name }} </h1>
     <div style="display: flex; gap: 1rem">
       <button mat-raised-button> Edit Wallet
         <mat-icon>edit</mat-icon>
@@ -30,16 +30,83 @@
       </div>
     </div>
   </div>
-  <div>
-    <mat-card>
-      <mat-card-title> Cash Flow </mat-card-title>
-      <mat-card-content>
-        <mat-checkbox >Check me!</mat-checkbox>
-      </mat-card-content>
-    </mat-card>
 
+  <div>
+    <p> Earnings </p>
+    <table mat-table [dataSource]="earnings" class="mat-elevation-z8">
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> ID </th>
+        <td mat-cell *matCellDef="let element"> {{element.id }} </td>
+      </ng-container>
+      <ng-container matColumnDef="walletId">
+        <th mat-header-cell *matHeaderCellDef> walletId </th>
+        <td mat-cell *matCellDef="let element"> {{element.walletId }} </td>
+      </ng-container>
+      <ng-container matColumnDef="amount">
+        <th mat-header-cell *matHeaderCellDef> amount </th>
+        <td mat-cell *matCellDef="let element"> {{element.amount }} </td>
+      </ng-container>
+      <ng-container matColumnDef="category_id">
+        <th mat-header-cell *matHeaderCellDef> category_id </th>
+        <td mat-cell *matCellDef="let element"> {{element.category_id }} </td>
+      </ng-container>
+      <ng-container matColumnDef="note">
+        <th mat-header-cell *matHeaderCellDef> note </th>
+        <td mat-cell *matCellDef="let element"> {{element.note }} </td>
+      </ng-container>
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef> date </th>
+        <td mat-cell *matCellDef="let element"> {{element.date }} </td>
+      </ng-container>
+      <ng-container matColumnDef="recurrent_id">
+        <th mat-header-cell *matHeaderCellDef> recurrent_id </th>
+        <td mat-cell *matCellDef="let element"> {{element.recurrent_id }} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"> </tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
   </div>
 
+  <div>
+    <p> Expenses </p>
+    <table mat-table [dataSource]="expenses" class="mat-elevation-z8">
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> ID </th>
+        <td mat-cell *matCellDef="let element"> {{element.id }} </td>
+      </ng-container>
+      <ng-container matColumnDef="walletId">
+        <th mat-header-cell *matHeaderCellDef> walletId </th>
+        <td mat-cell *matCellDef="let element"> {{element.walletId }} </td>
+      </ng-container>
+      <ng-container matColumnDef="amount">
+        <th mat-header-cell *matHeaderCellDef> amount </th>
+        <td mat-cell *matCellDef="let element"> {{element.amount }} </td>
+      </ng-container>
+      <ng-container matColumnDef="category_id">
+        <th mat-header-cell *matHeaderCellDef> category_id </th>
+        <td mat-cell *matCellDef="let element"> {{element.category_id }} </td>
+      </ng-container>
+      <ng-container matColumnDef="note">
+        <th mat-header-cell *matHeaderCellDef> note </th>
+        <td mat-cell *matCellDef="let element"> {{element.note }} </td>
+      </ng-container>
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef> date </th>
+        <td mat-cell *matCellDef="let element"> {{element.date }} </td>
+      </ng-container>
+      <ng-container matColumnDef="recurrent_id">
+        <th mat-header-cell *matHeaderCellDef> recurrent_id </th>
+        <td mat-cell *matCellDef="let element"> {{element.recurrent_id }} </td>
+      </ng-container>
 
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+
+  <div>
+    <p> transactions</p>
+  </div>
 
 </div>
