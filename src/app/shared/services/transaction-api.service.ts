@@ -15,6 +15,9 @@ export class TransactionApiService extends BaseService<Transaction> {
     return this.http.get<Transaction[]>(`${this.basePath}${this.resourceEndpoint}?userId=${userId}`, this.httpOptions)
       .pipe(catchError(this.handleError));
   }
-
+  getTRansactionsByWalletId(walletId: any) {
+    return this.http.get<Transaction[]>(`${this.basePath}${this.resourceEndpoint}?walletId=${walletId}`, this.httpOptions)
+      .pipe(catchError(this.handleError));
+  }
 
 }

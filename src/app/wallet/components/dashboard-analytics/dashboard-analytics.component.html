@@ -6,10 +6,10 @@
 
 <div style="margin: 1rem;">
   <div style="display: flex; width: 100%; justify-content: space-between;">
-    <app-balance-display [balance]="balances[0]" [title]="titles[0]" />
-    <app-balance-display [balance]="balances[1]" [title]="titles[1]" />
-    <app-balance-display [balance]="balances[2]" [title]="titles[2]" />
-    <app-balance-display [balance]="balances[3]" [title]="titles[3]" />
+    <app-balance-display [balance]="totalBalance" [title]="titles[0]" />
+    <app-balance-display [balance]="periodChange" [title]="titles[1]" />
+    <app-balance-display [balance]="periodExpense" [title]="titles[2]" />
+    <app-balance-display [balance]="periodEarning" [title]="titles[3]" />
   </div>
 </div>
 
