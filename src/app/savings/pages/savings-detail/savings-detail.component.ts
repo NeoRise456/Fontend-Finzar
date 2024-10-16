@@ -7,13 +7,10 @@ import {MatIcon} from "@angular/material/icon";
 import {ActivatedRoute} from "@angular/router";
 import {SavingApiService} from "../../services/saving-api.service";
 import {Saving} from "../../model/saving.entity";
-import {HttpClient} from "@angular/common/http";
 import {SavingTransaction} from "../../model/saving-transaction.entity";
 import { MatTableModule } from '@angular/material/table';
-
 import {MatProgressBar} from "@angular/material/progress-bar";
 import {DatePipe, NgIf} from "@angular/common";
-
 
 @Component({
   selector: 'app-savings-detail',
@@ -31,9 +28,7 @@ import {DatePipe, NgIf} from "@angular/common";
       MatTableModule,
     NgIf,
     DatePipe,
-  ],
-  templateUrl: './savings-detail.component.html',
-  styleUrl: './savings-detail.component.css'
+  ]
 })
 export class SavingsDetailComponent implements OnInit {
   titles = [
@@ -53,30 +48,22 @@ export class SavingsDetailComponent implements OnInit {
     345
   ];
 
-  saving: Saving | undefined;  // Variable para almacenar el ahorro cargado
-  savingId: number | undefined; // ID del ahorro obtenido de la URL
-
+  saving: Saving | undefined;
+  savingId: number | undefined;
   savingTransactions: SavingTransaction[] = [];
-
-  showAll: boolean = false; // Variable para controlar la visibilidad
-
-  toggleShowAll() {
-    this.showAll = !this.showAll;
-  }
+  showAll: boolean = false;
 
   constructor(
-      private http: HttpClient,
       private route: ActivatedRoute,
       private savingApiService: SavingApiService
   ) {}
 
 
   ngOnInit() {
-    // Obtener el id de la URL
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
-      this.savingId = Number(id);  // Convertir el id a número
-      this.loadSaving();  // Cargar los detalles del ahorro
+      this.savingId = Number(id);
+      this.loadSaving();
     }
     this.loadSavingTransactions();
 
@@ -96,35 +83,19 @@ export class SavingsDetailComponent implements OnInit {
 
   loadSaving() {
     if (this.savingId) {
-      // Llamada al servicio para obtener el ahorro por ID
       this.savingApiService.getSavingById(this.savingId).subscribe(
           (data: Saving) => {
-            this.saving = data;  // Asignar el ahorro obtenido
+            this.saving = data;
           },
           error => {
-            console.error('Error al cargar el ahorro', error);  // Manejo de errores
+            console.error('Error al cargar el ahorro', error);
           }
       );
     }
   }
 
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        // User confirmed the deletion
-        this.deleteSavingFromDb(this.currentSavingId);
-      }
-    });
+  get hasTransactions(): boolean {
+    return this.savingTransactions && this.savingTransactions.length > 0;
   }
 
-  private deleteSavingFromDb(savingId: number): void {
-    this.http.delete(`http://localhost:3000/savings/${savingId}`).subscribe(
-        () => {
-          console.log('Saving deleted successfully');
-        },
-        error => {
-          console.error('Error deleting saving', error);
-        }
-    );
-  }
 }
