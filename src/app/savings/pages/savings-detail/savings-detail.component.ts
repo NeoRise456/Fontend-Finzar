@@ -9,15 +9,8 @@ import {SavingApiService} from "../../services/saving-api.service";
 import {Saving} from "../../model/saving.entity";
 import {HttpClient} from "@angular/common/http";
 import {SavingTransaction} from "../../model/saving-transaction.entity";
-import {
-  MatCell,
-  MatCellDef,
-  MatColumnDef,
-  MatHeaderCell, MatHeaderCellDef,
-  MatHeaderRow,
-  MatRow, MatRowDef,
-  MatTable
-} from "@angular/material/table";
+import { MatTableModule } from '@angular/material/table';
+
 import {MatProgressBar} from "@angular/material/progress-bar";
 import {DatePipe, NgIf} from "@angular/common";
 
@@ -31,18 +24,10 @@ import {DatePipe, NgIf} from "@angular/common";
     MatIconButton,
     MatIcon,
     MatButton,
-    MatTable,
-    MatHeaderCell,
-    MatColumnDef,
-    MatCell,
-    MatHeaderRow,
-    MatRow,
-    MatCellDef,
-    MatHeaderCellDef,
-    MatRowDef,
     MatProgressBar,
+      MatTableModule,
     NgIf,
-    DatePipe
+    DatePipe,
   ],
   templateUrl: './savings-detail.component.html',
   styleUrl: './savings-detail.component.css'
