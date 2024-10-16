@@ -14,9 +14,12 @@ import { MatTableModule } from '@angular/material/table';
 import {MatProgressBar} from "@angular/material/progress-bar";
 import {DatePipe, NgIf} from "@angular/common";
 
+
 @Component({
   selector: 'app-savings-detail',
   standalone: true,
+  templateUrl: './savings-detail.component.html',
+  styleUrls: ['./savings-detail.component.css'],
   imports: [
     BalancePiechartComponent,
     MatCardModule,
@@ -106,5 +109,22 @@ export class SavingsDetailComponent implements OnInit {
   }
 
 
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        // User confirmed the deletion
+        this.deleteSavingFromDb(this.currentSavingId);
+      }
+    });
+  }
 
+  private deleteSavingFromDb(savingId: number): void {
+    this.http.delete(`http://localhost:3000/savings/${savingId}`).subscribe(
+        () => {
+          console.log('Saving deleted successfully');
+        },
+        error => {
+          console.error('Error deleting saving', error);
+        }
+    );
+  }
 }
