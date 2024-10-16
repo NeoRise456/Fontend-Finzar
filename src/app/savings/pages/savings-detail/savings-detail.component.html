@@ -1,7 +1,7 @@
 
 <div style=" margin: 4rem 24rem; ">
   <div style="display: flex; justify-content: space-between">
-    <h1> Titulo Saving </h1>
+    <h1> {{ saving?.name }} </h1>
     <div style="display: flex; gap: 1rem">
       <button mat-raised-button> Edit Saving
         <mat-icon>edit</mat-icon>
@@ -19,6 +19,8 @@
       <app-balance-display [balance]="(saving?.totalGoal ?? 0) - (saving?.currentAmount ?? 0)" [title]="titles[2]" />
         <app-balance-display [balance]="(((saving?.totalGoal ?? 0) - (saving?.currentAmount ?? 0)) / 30).toFixed(2)" [title]="titles[3]" />    </div>
   </div>
+
+
 
     <div style="margin: 1rem;">
         <mat-card>
@@ -40,13 +42,16 @@
                     <p>Saved {{saving?.totalGoal ?? 0}} PEN ({{((saving?.currentAmount ?? 0) / (saving?.totalGoal ?? 1) * 100).toFixed(2)}}%)</p>
                     <mat-progress-bar mode="determinate" [value]="(saving?.currentAmount ?? 0) / (saving?.totalGoal ?? 1) * 100" style="width: 40%; margin: 0;"></mat-progress-bar>
                 </div>
-                <button mat-raised-button (click)="toggleShowAll()" style="margin-top: 2rem;">
-                    {{ showAll ? 'Hide all' : 'See all' }}
-                </button>
             </mat-card-content>
         </mat-card>
     </div>
 
+    <div style="margin: 1rem;">
+        <div>
+            <h5> Period Income </h5>
+            <app-balance-piechart/>
+        </div>
+    </div>
 
     <div style="margin: 1rem;">
         <h6>Savings transactions</h6>
