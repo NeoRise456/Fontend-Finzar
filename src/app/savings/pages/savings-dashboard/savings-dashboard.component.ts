@@ -15,10 +15,10 @@ import {Saving} from "../../model/saving.entity";
   styleUrl: './savings-dashboard.component.css'
 })
 export class SavingsDashboardComponent {
-  savings: Saving[] = [];
+  savings: Saving[];
 
   constructor(private savingApiService: SavingApiService) {
-
+    this.savings = [];
   }
 
   ngOnInit() {
