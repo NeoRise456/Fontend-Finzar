@@ -10,6 +10,7 @@ import { ExpensesApiService } from "../../services/expenses-api.service";
 import { EarningsApiService } from "../../services/earnings-api.service";
 import { Expense } from "../../model/expense.entity";
 import { Earning } from "../../model/earning.entity";
+import {WalletApiService} from "../../../shared/services/wallet-api.service";
 
 @Component({
   selector: 'app-dashboard-analytics',
@@ -33,7 +34,8 @@ export class DashboardAnalyticsComponent implements OnInit{
   periodExpense: number = 0;
   periodChange: number = 0;
 
-  constructor(private expensesApiService: ExpensesApiService, private earningsApiService: EarningsApiService) {
+  constructor(private expensesApiService: ExpensesApiService, private earningsApiService: EarningsApiService,
+              private walletApiService: WalletApiService) {
   }
 
   ngOnInit(): void {
@@ -45,6 +47,11 @@ export class DashboardAnalyticsComponent implements OnInit{
       this.periodEarning = earnings.reduce((acc, earning) => acc + earning.amount, 0);
       this.periodChange += this.periodEarning;
     });
+
+    this.walletApiService.getWalletsByUserId(1).subscribe((wallets: Wallet[]) => {
+        this.totalBalance = wallets.reduce((acc, wallet) => acc + wallet.balance, 0);
+    });
+
   }
 
   titles = [
