@@ -11,6 +11,7 @@ import {SavingTransaction} from "../../model/saving-transaction.entity";
 import { MatTableModule } from '@angular/material/table';
 import {MatProgressBar} from "@angular/material/progress-bar";
 import {DatePipe, NgIf} from "@angular/common";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-savings-detail',
@@ -31,6 +32,7 @@ import {DatePipe, NgIf} from "@angular/common";
   ]
 })
 export class SavingsDetailComponent implements OnInit {
+
   titles = [
     'Savings Goal',
     'Saved so far',
@@ -55,7 +57,8 @@ export class SavingsDetailComponent implements OnInit {
 
   constructor(
       private route: ActivatedRoute,
-      private savingApiService: SavingApiService
+      private savingApiService: SavingApiService,
+      private router: Router
   ) {}
 
 
@@ -94,8 +97,20 @@ export class SavingsDetailComponent implements OnInit {
     }
   }
 
+    handleDelete() {
+        if (this.saving && this.saving.id) {
+            this.savingApiService.deleteSavingById(this.saving.id).subscribe(
+                () => {
+                    console.log('Saving deleted successfully');
+                    this.router.navigate(['/savings']);
+                },
+                error => {
+                    console.error('Error deleting saving:', error);
+                }
+            );
+        }
+    }
   get hasTransactions(): boolean {
     return this.savingTransactions && this.savingTransactions.length > 0;
   }
-
 }
