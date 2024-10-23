@@ -12,6 +12,8 @@ import { MatTableModule } from '@angular/material/table';
 import {MatProgressBar} from "@angular/material/progress-bar";
 import {DatePipe, NgIf} from "@angular/common";
 import { Router } from '@angular/router';
+import {MatDialog} from "@angular/material/dialog";
+import {SavingDeleteComponent} from "../../components/saving-delete/saving-delete.component";
 
 @Component({
   selector: 'app-savings-detail',
@@ -29,6 +31,7 @@ import { Router } from '@angular/router';
       MatTableModule,
     NgIf,
     DatePipe,
+
   ]
 })
 export class SavingsDetailComponent implements OnInit {
@@ -58,7 +61,8 @@ export class SavingsDetailComponent implements OnInit {
   constructor(
       private route: ActivatedRoute,
       private savingApiService: SavingApiService,
-      private router: Router
+      private router: Router,
+      private dialog: MatDialog
   ) {}
 
 
@@ -97,18 +101,17 @@ export class SavingsDetailComponent implements OnInit {
     }
   }
 
-    handleDelete() {
-        if (this.saving && this.saving.id) {
-            this.savingApiService.deleteSavingById(this.saving.id).subscribe(
-                () => {
-                    console.log('Saving deleted successfully');
-                    this.router.navigate(['/savings']);
-                },
-                error => {
-                    console.error('Error deleting saving:', error);
-                }
-            );
-        }
+    openDeleteDialog(): void {
+        const dialogRef = this.dialog.open(SavingDeleteComponent, {
+            data: { savingId: this.savingId }
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            if (result) {
+                console.log('Saving deleted from dialog');
+                this.router.navigate(['/savings']);
+            }
+        });
     }
   get hasTransactions(): boolean {
     return this.savingTransactions && this.savingTransactions.length > 0;
