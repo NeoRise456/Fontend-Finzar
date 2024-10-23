@@ -16,12 +16,13 @@ import {WalletItemComponent} from "../../components/wallet-item/wallet-item.comp
 import {ActivatedRoute} from "@angular/router";
 import {Wallet} from "../../model/wallet.entity";
 import {WalletApiService} from "../../../shared/services/wallet-api.service";
+import {WalletFiltersComponent} from "../../components/wallet-filters/wallet-filters.component";
 
 @Component({
   selector: 'app-wallet-view',
   standalone: true,
   imports: [MatButtonModule, MatIconModule, MatCardModule, MatTableModule, BalanceDisplayComponent,
-    MatCheckboxModule, NgForOf, WalletItemComponent, MatTableModule, NgIf],
+    MatCheckboxModule, NgForOf, WalletItemComponent, MatTableModule, NgIf, WalletFiltersComponent],
   templateUrl: './wallet-view.component.html',
   styleUrl: './wallet-view.component.css'
 })
