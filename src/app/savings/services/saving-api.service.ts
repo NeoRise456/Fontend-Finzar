@@ -38,6 +38,11 @@ export class SavingApiService extends BaseService<Saving> {
         .pipe(catchError(this.handleError));
   }
 
+  //delete saving by id
+  deleteSavingById(savingId: number) {
+    return this.http.delete(`${this.basePath}${this.resourceEndpoint}/${savingId}`, this.httpOptions)
+        .pipe(catchError(this.handleError));
+  }
 
 
 
