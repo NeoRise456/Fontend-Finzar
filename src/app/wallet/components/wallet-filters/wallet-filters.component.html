@@ -1,1 +1,36 @@
-<p>wallet-filters works!</p>
+<div [formGroup]="walletForms">
+    <mat-card>
+        <mat-card-header style="display: flex; justify-content: space-between">
+            <mat-card-title>Filters</mat-card-title>
+            <div style=" display:flex ;gap: 1rem">
+                <button mat-raised-button style="background-color: lightskyblue;"> Filter </button>
+                <button mat-raised-button (click)="resetFilters()">Reset filters</button>
+            </div>
+        </mat-card-header>
+
+        <mat-card-actions>
+            <form [formGroup]="walletForms">
+                <div style="display: flex;gap: 1rem; margin: 0 1rem">
+                    <mat-form-field>
+                        <mat-label>By Category</mat-label>
+                        <mat-select formControlName="category">
+                            <mat-option *ngFor="let category of categories" [value]="category.id">
+                                {{ category.name }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="fill">
+                        <mat-label>Enter a date range</mat-label>
+                        <mat-date-range-input [rangePicker]="picker">
+                            <input matStartDate placeholder="Start date" formControlName="start">
+                            <input matEndDate placeholder="End date" formControlName="end">
+                        </mat-date-range-input>
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-date-range-picker #picker></mat-date-range-picker>
+                    </mat-form-field>
+                </div>
+            </form>
+        </mat-card-actions>
+    </mat-card>
+</div>
