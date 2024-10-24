@@ -2,9 +2,10 @@
   <div style="display: flex; justify-content: space-between">
     <h1> {{ saving?.name }} </h1>
     <div style="display: flex; gap: 1rem">
-      <button mat-raised-button> Edit Saving
-        <mat-icon>edit</mat-icon>
-      </button>
+        <button mat-raised-button color="primary" (click)="saving ? openEditDialog(saving) : null">
+            Edit Saving
+            <mat-icon>edit</mat-icon>
+        </button>
         <button mat-raised-button color="warn">
             Delete Saving
             <mat-icon>delete</mat-icon>
