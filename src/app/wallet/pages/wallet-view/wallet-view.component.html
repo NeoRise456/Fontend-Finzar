@@ -15,18 +15,16 @@
       <mat-icon>add</mat-icon>
     </button>
   </div>
-  <div>
+  <div style="margin-top: 1rem">
     <app-wallet-filters [categories]="categories"/>
   </div>
-  <div>
-    <div style="margin-top: 1rem;">
+  <div style="margin-top: 1rem;">
       <div style="display: flex; width: 100%; justify-content: space-between;">
         <app-balance-display [balance]="totalBalance" [title]="titles[0]" />
         <app-balance-display [balance]="periodChange" [title]="titles[1]" />
         <app-balance-display [balance]="periodExpense" [title]="titles[2]" />
         <app-balance-display [balance]="periodEarning" [title]="titles[3]" />
       </div>
-    </div>
   </div>
 
   <div *ngIf="earnings.length > 0" style="margin-top: 1rem;">
