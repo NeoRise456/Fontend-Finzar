@@ -58,6 +58,7 @@ export class WalletViewComponent implements OnInit {
 
     this.walletApiService.getWalletById(this.walletId).subscribe(wallet => {
       this.wallet = wallet;
+      this.totalBalance = wallet.balance;
     });
 
     this.earningApiService.getEarningsByWalletId(this.walletId).subscribe(earnings => {
