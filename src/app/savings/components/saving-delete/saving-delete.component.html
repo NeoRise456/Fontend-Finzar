@@ -1,8 +1,15 @@
-<h2 mat-dialog-title>Confirm Deletion</h2>
-<mat-dialog-content>
-    Are you sure you want to delete this saving?
-</mat-dialog-content>
-<mat-dialog-actions>
-    <button mat-button (click)="onCancel()">Cancel</button>
-    <button mat-button color="warn" (click)="onConfirm()">Delete</button>
-</mat-dialog-actions>
+<mat-card style="max-width: 400px; margin: auto;">
+    <mat-card-header>
+        <mat-card-title>Confirm Delete</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <p>Are you sure you want to delete this saving?</p>
+    </mat-card-content>
+    <mat-card-actions style="justify-content: space-between;">
+        <button mat-button (click)="cancel()">Cancel</button>
+        <button mat-raised-button color="warn" (click)="deleteSaving()">
+            Delete Saving
+            <mat-icon>delete</mat-icon>
+        </button>
+    </mat-card-actions>
+</mat-card>
