@@ -29,7 +29,7 @@ export class SavingApiService extends BaseService<Saving> {
 
   //update saving
   updateSaving(saving: Saving) {
-    return this.http.put<Saving>(`${this.basePath}${this.resourceEndpoint}`, saving, this.httpOptions)
+    return this.http.put<Saving>(`${this.basePath}${this.resourceEndpoint}/${saving.id}`, saving, this.httpOptions)
       .pipe(catchError(this.handleError));
   }
 
