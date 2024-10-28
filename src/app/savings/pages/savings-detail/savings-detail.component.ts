@@ -4,16 +4,17 @@ import {MatCardModule} from "@angular/material/card";
 import {BalanceDisplayComponent} from "../../../wallet/components/balance-display/balance-display.component";
 import {MatButton, MatIconButton} from "@angular/material/button";
 import {MatIcon} from "@angular/material/icon";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {SavingApiService} from "../../services/saving-api.service";
 import {Saving} from "../../model/saving.entity";
 import {SavingTransaction} from "../../model/saving-transaction.entity";
 import { MatTableModule } from '@angular/material/table';
 import {MatProgressBar} from "@angular/material/progress-bar";
 import {DatePipe, NgIf} from "@angular/common";
-import { Router } from '@angular/router';
 import {MatDialog} from "@angular/material/dialog";
 import {SavingDeleteComponent} from "../../components/saving-delete/saving-delete.component";
+import {SavingEditComponent} from "../../components/saving-edit/saving-edit.component";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-savings-detail',
@@ -113,7 +114,33 @@ export class SavingsDetailComponent implements OnInit {
             }
         });
     }
+  openEditDialog(saving: Saving) {
+    const dialogRef = this.dialog.open(SavingEditComponent, {
+      data: saving
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.updateSaving(this.savingId, result);
+      }
+    });
+  }
+
+  updateSaving(id: number | undefined, saving: Saving) {
+    if (id !== undefined) {
+      this.savingApiService.updateSaving(id, saving).subscribe(
+          updatedSaving => {
+            console.log('Saving updated:', updatedSaving);
+            this.loadSaving();
+          },
+          error => {
+            console.error('Error updating saving:', error);
+          }
+      );
+    }
+  }
   get hasTransactions(): boolean {
     return this.savingTransactions && this.savingTransactions.length > 0;
   }
 }
+
