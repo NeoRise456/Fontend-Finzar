@@ -14,7 +14,6 @@ import {DatePipe, NgIf} from "@angular/common";
 import {MatDialog} from "@angular/material/dialog";
 import {SavingDeleteComponent} from "../../components/saving-delete/saving-delete.component";
 import {SavingEditComponent} from "../../components/saving-edit/saving-edit.component";
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-savings-detail',
@@ -128,7 +127,7 @@ export class SavingsDetailComponent implements OnInit {
 
   updateSaving(id: number | undefined, saving: Saving) {
     if (id !== undefined) {
-      this.savingApiService.updateSaving(id, saving).subscribe(
+      this.savingApiService.updateSaving(saving).subscribe(
           updatedSaving => {
             console.log('Saving updated:', updatedSaving);
             this.loadSaving();
