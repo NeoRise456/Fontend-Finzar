@@ -33,7 +33,7 @@ export class SavingEditComponent {
   ) {
     this.editForm = this.fb.group({
       name: [data.name, []],
-      amount: [data.currentAmount, []],
+      totalGoal: [data.totalGoal, []],
       categoryId: [data.categoryId, []],
       startDate: [data.startDate, []],
       endDate: [data.endDate, []]
