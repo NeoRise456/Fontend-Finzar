@@ -16,12 +16,15 @@ import {WalletItemComponent} from "../../components/wallet-item/wallet-item.comp
 import {ActivatedRoute} from "@angular/router";
 import {Wallet} from "../../model/wallet.entity";
 import {WalletApiService} from "../../../shared/services/wallet-api.service";
+import {WalletFiltersComponent} from "../../components/wallet-filters/wallet-filters.component";
+import { Category } from "../../../shared/model/categories.entity";
+import { CategoryApiService } from "../../../shared/services/category-api.service";
 
 @Component({
   selector: 'app-wallet-view',
   standalone: true,
   imports: [MatButtonModule, MatIconModule, MatCardModule, MatTableModule, BalanceDisplayComponent,
-    MatCheckboxModule, NgForOf, WalletItemComponent, MatTableModule, NgIf],
+    MatCheckboxModule, NgForOf, WalletItemComponent, MatTableModule, NgIf, WalletFiltersComponent],
   templateUrl: './wallet-view.component.html',
   styleUrl: './wallet-view.component.css'
 })
@@ -29,6 +32,7 @@ export class WalletViewComponent implements OnInit {
   earnings: Earning[];
   expenses: Expense[];
   transactions: Transaction[];
+  categories: Category[];
   walletId: number;
   wallet: Wallet;
   cashflow!: any[];
@@ -38,12 +42,12 @@ export class WalletViewComponent implements OnInit {
   periodExpense: number = 0;
   periodChange: number = 0;
 
-  displayedColumns: string[] = [ 'id', 'walletId', 'amount', 'category_id', 'note', 'date', 'recurrent_id'];
+  displayedColumns: string[] = ['walletId', 'amount', 'category', 'note', 'date', 'recurrent_id'];
 
-  displayedTransactionColumns: string[] = ['id','transaction_type_id', 'wallet_id', 'amount', 'date', 'note', 'category_id'];
+  displayedTransactionColumns: string[] = ['transaction_type_id', 'wallet_id', 'amount', 'date', 'note', 'category'];
 
-  constructor( private earningApiService: EarningsApiService, private expensesApiService: ExpensesApiService, private transactionsApiService: TransactionApiService, private route: ActivatedRoute, private walletApiService: WalletApiService) {
-    this.earnings = this.expenses = this.transactions = [];
+  constructor( private categoryApiService: CategoryApiService, private earningApiService: EarningsApiService, private expensesApiService: ExpensesApiService, private transactionsApiService: TransactionApiService, private route: ActivatedRoute, private walletApiService: WalletApiService) {
+    this.earnings = this.expenses = this.transactions = this.categories = [];
     this.walletId = 0;
     this.wallet = new Wallet();
   }
@@ -54,6 +58,7 @@ export class WalletViewComponent implements OnInit {
 
     this.walletApiService.getWalletById(this.walletId).subscribe(wallet => {
       this.wallet = wallet;
+      this.totalBalance = wallet.balance;
     });
 
     this.earningApiService.getEarningsByWalletId(this.walletId).subscribe(earnings => {
@@ -69,6 +74,9 @@ export class WalletViewComponent implements OnInit {
     this.transactionsApiService.getTransactionsByUserId(1).subscribe(transactions => {
       this.transactions = transactions;
     });
+    this.categoryApiService.getAllCategories().subscribe(categories => {
+      this.categories = categories;
+    });
 
     this.cashflow = this.expenses.concat(this.earnings);
   }
@@ -81,4 +89,8 @@ export class WalletViewComponent implements OnInit {
     'Period Income',
     'Period Expenses'
   ];
+
+  getCategoryNameById(categoryId: number): string {
+    return this.categories.find(category => category.id === categoryId)?.name || '';
+  }
 }

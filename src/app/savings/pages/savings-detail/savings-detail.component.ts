@@ -14,6 +14,7 @@ import {DatePipe, NgIf} from "@angular/common";
 import {MatDialog} from "@angular/material/dialog";
 import {SavingDeleteComponent} from "../../components/saving-delete/saving-delete.component";
 import {SavingEditComponent} from "../../components/saving-edit/saving-edit.component";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-savings-detail',
@@ -31,6 +32,7 @@ import {SavingEditComponent} from "../../components/saving-edit/saving-edit.comp
       MatTableModule,
     NgIf,
     DatePipe,
+
   ]
 })
 export class SavingsDetailComponent implements OnInit {

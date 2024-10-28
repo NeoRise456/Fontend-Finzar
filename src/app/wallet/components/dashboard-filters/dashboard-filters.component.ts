@@ -19,7 +19,7 @@ import {
 } from "@angular/material/datepicker";
 
 @Component({
-  selector: 'app-wallet-filters',
+  selector: 'app-dashboard-filters',
   standalone: true,
   imports: [MatCardModule, MatFormFieldModule, ReactiveFormsModule, MatSelectModule, NgForOf, MatButtonModule, MatInputModule, MatDateRangeInput, MatDateRangePicker, MatDatepickerToggle, MatEndDate, MatStartDate, MatNativeDateModule, MatDatepickerInput, MatDatepicker],
   templateUrl: './dashboard-filters.component.html',

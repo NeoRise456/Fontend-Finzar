@@ -1,0 +1,22 @@
+table {
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #e6e6e6;
+    box-shadow: none;
+    padding: 10px;
+}
+
+th, td {
+    border-top: none;
+    border-bottom: none;
+}
+
+th {
+    font-weight: bold;
+    font-size: 1.4em;
+}
+td {
+    font-size: 1.2em;
+}
