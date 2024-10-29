@@ -1,0 +1,17 @@
+<h2 mat-dialog-title>Create transaction</h2>
+<mat-dialog-content>
+    <mat-form-field>
+        <mat-label>Amount</mat-label>
+        <input matInput type="number" required [(ngModel)]="amount" name="amount"/>
+    </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button mat-button (click)="close()">Close</button>
+    <!-- Add Wallet button is disabled unless both inputs are valid -->
+    <button mat-button
+            (click)="onSubmit()"
+            [disabled]="!note || amount <= 0 || !categories">
+        Add Wallet
+    </button>
+</mat-dialog-actions>
