@@ -1,17 +1,39 @@
 <h2 mat-dialog-title>Create transaction</h2>
 <mat-dialog-content>
-    <mat-form-field>
-        <mat-label>Amount</mat-label>
-        <input matInput type="number" required [(ngModel)]="amount" name="amount"/>
-    </mat-form-field>
+    <form>
+        <mat-form-field appearance="fill" style="padding: 5px;">
+            <mat-label>Transaction Type</mat-label>
+            <mat-select required [(ngModel)]="transactionType" name="transactionType">
+                <mat-option value="1">Income</mat-option>
+                <mat-option value="2">Expense</mat-option>
+                <mat-option value="3">Transfer</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" style="padding: 5px;">
+            <mat-label>Amount</mat-label>
+            <input matInput type="number" required [(ngModel)]="amount" name="amount" />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" style="padding: 5px;">
+            <mat-label>Note</mat-label>
+            <input matInput [(ngModel)]="note" name="note" />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" style="padding: 5px;">
+            <mat-label>By Category</mat-label>
+            <mat-select required [(ngModel)]="category_id" name="category_id">
+                <mat-option *ngFor="let category of categories" [value]="category.id">
+                    {{ category.name }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </form>
 </mat-dialog-content>
 
 <mat-dialog-actions>
     <button mat-button (click)="close()">Close</button>
-    <!-- Add Wallet button is disabled unless both inputs are valid -->
-    <button mat-button
-            (click)="onSubmit()"
-            [disabled]="!note || amount <= 0 || !categories">
-        Add Wallet
+    <button mat-button (click)="onSubmit()" [disabled]="!transactionType || amount <= 0 || !note || !category_id">
+        Create Transaction
     </button>
 </mat-dialog-actions>
