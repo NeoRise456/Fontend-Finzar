@@ -11,7 +11,7 @@
     </div>
   </div>
   <div>
-    <button mat-raised-button> Add Transaction
+    <button mat-raised-button (click)="onAddTransaction()"> Add Transaction
       <mat-icon>add</mat-icon>
     </button>
   </div>
@@ -30,17 +30,13 @@
   <div *ngIf="earnings.length > 0" style="margin-top: 1rem;">
     <h4> Earnings </h4>
     <table mat-table [dataSource]="earnings" class="mat-elevation-z8">
-      <ng-container matColumnDef="walletId">
-        <th mat-header-cell *matHeaderCellDef> Wallet ID </th>
-        <td mat-cell *matCellDef="let element"> {{element.walletId }} </td>
+      <ng-container matColumnDef="category">
+        <th mat-header-cell *matHeaderCellDef> Category </th>
+        <td mat-cell *matCellDef="let element"> {{getCategoryNameById(element.category_id)}} </td>
       </ng-container>
       <ng-container matColumnDef="amount">
         <th mat-header-cell *matHeaderCellDef> Amount </th>
         <td mat-cell *matCellDef="let element"> {{element.amount }} </td>
-      </ng-container>
-      <ng-container matColumnDef="category">
-        <th mat-header-cell *matHeaderCellDef> Category </th>
-        <td mat-cell *matCellDef="let element"> {{getCategoryNameById(element.category_id)}} </td>
       </ng-container>
       <ng-container matColumnDef="note">
         <th mat-header-cell *matHeaderCellDef> Note </th>
@@ -51,8 +47,8 @@
         <td mat-cell *matCellDef="let element"> {{element.date }} </td>
       </ng-container>
       <ng-container matColumnDef="recurrent_id">
-        <th mat-header-cell *matHeaderCellDef> Recurrent ID </th>
-        <td mat-cell *matCellDef="let element"> {{element.recurrent_id }} </td>
+        <th mat-header-cell *matHeaderCellDef> Recurrence </th>
+        <td mat-cell *matCellDef="let element"> {{getRecurrenceById(element.recurrent_id) }} </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"> </tr>
@@ -63,18 +59,14 @@
   <div *ngIf="expenses.length > 0" style="margin-top: 1rem">
     <h4> Expenses </h4>
     <table mat-table [dataSource]="expenses" class="mat-elevation-z8">
-      <ng-container matColumnDef="walletId">
-        <th mat-header-cell *matHeaderCellDef> Wallet ID </th>
-        <td mat-cell *matCellDef="let element"> {{element.walletId }} </td>
+      <ng-container matColumnDef="category">
+        <th mat-header-cell *matHeaderCellDef> Category </th>
+        <td mat-cell *matCellDef="let element"> {{getCategoryNameById(element.category_id)}} </td>
       </ng-container>
       <ng-container matColumnDef="amount">
         <th mat-header-cell *matHeaderCellDef> Amount </th>
         <td mat-cell *matCellDef="let element"> {{element.amount }} </td>
       </ng-container>
-        <ng-container matColumnDef="category">
-            <th mat-header-cell *matHeaderCellDef> Category </th>
-            <td mat-cell *matCellDef="let element"> {{getCategoryNameById(element.category_id)}} </td>
-        </ng-container>
       <ng-container matColumnDef="note">
         <th mat-header-cell *matHeaderCellDef> Note </th>
         <td mat-cell *matCellDef="let element"> {{element.note }} </td>
@@ -84,8 +76,8 @@
         <td mat-cell *matCellDef="let element"> {{element.date }} </td>
       </ng-container>
       <ng-container matColumnDef="recurrent_id">
-        <th mat-header-cell *matHeaderCellDef> Recurrent ID </th>
-        <td mat-cell *matCellDef="let element"> {{element.recurrent_id }} </td>
+        <th mat-header-cell *matHeaderCellDef> Recurrence </th>
+        <td mat-cell *matCellDef="let element"> {{getRecurrenceById(element.recurrent_id) }} </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
