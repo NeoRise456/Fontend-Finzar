@@ -15,4 +15,10 @@ export class WalletApiService extends BaseService<Wallet> {
       .pipe(catchError(this.handleError));
   }
 
+  //get all wallets by user id
+    getWalletsByUserId(userId: any) {
+        return this.http.get<Wallet[]>(`${this.basePath}${this.resourceEndpoint}?userId=${userId}`, this.httpOptions)
+        .pipe(catchError(this.handleError));
+    }
+
 }

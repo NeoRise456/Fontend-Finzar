@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {BaseService} from "../../shared/services/base.service.service";
 import {Saving} from "../model/saving.entity";
 import {catchError} from "rxjs";
+import {SavingTransaction} from "../model/saving-transaction.entity";
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,11 @@ export class SavingApiService extends BaseService<Saving> {
       .pipe(catchError(this.handleError));
   }
 
+  getSavingById(savingId: number) {
+    return this.http.get<Saving>(`${this.basePath}${this.resourceEndpoint}/${savingId}`, this.httpOptions)
+        .pipe(catchError(this.handleError));
+  }
+
   //create saving
   createSaving(saving: Saving) {
     return this.http.post<Saving>(`${this.basePath}${this.resourceEndpoint}`, saving, this.httpOptions)
@@ -23,9 +29,21 @@ export class SavingApiService extends BaseService<Saving> {
 
   //update saving
   updateSaving(saving: Saving) {
-    return this.http.put<Saving>(`${this.basePath}${this.resourceEndpoint}`, saving, this.httpOptions)
+    return this.http.put<Saving>(`${this.basePath}${this.resourceEndpoint}/${saving.id}`, saving, this.httpOptions)
       .pipe(catchError(this.handleError));
   }
+
+  getSavingsTransactionsBySavingId(savingId: number | undefined) {
+    return this.http.get<SavingTransaction[]>(`${this.basePath}/savings_transactions?saving_id=${savingId}`, this.httpOptions)
+        .pipe(catchError(this.handleError));
+  }
+
+  //delete saving by id
+  deleteSavingById(savingId: number) {
+    return this.http.delete(`${this.basePath}${this.resourceEndpoint}/${savingId}`, this.httpOptions)
+        .pipe(catchError(this.handleError));
+  }
+
 
 
 }
