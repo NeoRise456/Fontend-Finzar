@@ -16,7 +16,7 @@
     <mat-menu #user="matMenu">
       <button mat-menu-item>Settings</button>
       <button mat-menu-item>Support</button>
-      <button mat-menu-item>Logout</button>
+      <button mat-menu-item (click)="logOut()">Logout</button>
     </mat-menu>
   </mat-toolbar>
 </header>
