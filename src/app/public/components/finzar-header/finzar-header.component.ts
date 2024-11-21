@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
 import {MatMenuModule, MatMenuTrigger} from "@angular/material/menu";
-import {RouterLink} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 
 
 @Component({
@@ -14,5 +14,10 @@ import {RouterLink} from "@angular/router";
   styleUrl: './finzar-header.component.css'
 })
 export class FinzarHeaderComponent {
+  private _router = inject(Router)
 
+  logOut() {
+    // Temporary routing, implement correctly when authentication is implemented
+    this._router.navigate(['/sign-in']);
+  }
 }
