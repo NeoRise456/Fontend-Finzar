@@ -9,7 +9,7 @@ import {Wallet} from "../../wallet/model/wallet.entity";
   providedIn: 'root'
 })
 export class BaseService<T> {
-  basePath: string = `${environment.apiUrl}`;
+  basePath: string = `${environment.serverBasePath}`;
   httpOptions = {
     headers: new HttpHeaders({
       'Content-type': 'application/json',
