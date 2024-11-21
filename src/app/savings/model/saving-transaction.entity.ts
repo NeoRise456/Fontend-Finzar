@@ -1,25 +1,45 @@
 export class SavingTransaction {
     id: number;
-    saving_id: number
-    amount: number;
-    date: string;
+    wallet: {
+        walletId: number;
+        name: string;
+        balance: number;
+    };
+    type: {
+        id: number;
+        name: string;
+    };
     note: string;
+    amount: number;
+    date: Date;
 
     constructor(
         id = 0,
-        saving_id = 0,
+        walletId = 0,
+        walletName = '',
+        walletBalance = 0,
+        typeId = 0,
+        typeName = '',
+        note = '',
         amount = 0,
-        date = '',
-        note = ''
-
+        date = new Date()
     ) {
         this.id = id;
-        this.saving_id = saving_id;
+        this.wallet = {
+            walletId: walletId,
+            name: walletName,
+            balance: walletBalance,
+        };
+        this.type = {
+            id: typeId,
+            name: typeName,
+        };
+        this.note = note;
         this.amount = amount;
         this.date = date;
-        this.note = note;
-
-
     }
 
+    getFormattedDate(): string {
+        return this.date.toISOString().split('T')[0];
+    }
 }
