@@ -8,6 +8,9 @@ import {Category} from "../../../shared/model/categories.entity";
 import {MatOption} from "@angular/material/core";
 import {MatSelect} from "@angular/material/select";
 import {NgForOf} from "@angular/common";
+import {Wallet} from "../../model/wallet.entity";
+import {WalletApiService} from "../../../shared/services/wallet-api.service";
+import {AuthenticationService} from "../../../iam/services/authentication.service";
 
 @Component({
   selector: 'app-transaction-dialog',
@@ -19,25 +22,42 @@ import {NgForOf} from "@angular/common";
 export class CreateTransactionDialogComponent {
   @Input() categories!: Category[];
   @Input() walletId!: number;
+
   note: string = '';
   amount: number = 0;
-  transactionType: string = '';
-  category_id: number = 0;
+  destinationWalletId: number = 0;
+  currentUserId: number = 0;
+  categoryId: number = 0;
+  wallets: Wallet[] = [];
 
   constructor(private dialogRef: MatDialogRef<CreateTransactionDialogComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: { categories: Category[], walletId: number}) {
+              @Inject(MAT_DIALOG_DATA) public data: { categories: Category[], walletId: number},
+              private walletService: WalletApiService, private authenticationService: AuthenticationService) {
     this.categories = data.categories;
     this.walletId = data.walletId;
   }
 
+  ngOnInit() {
+    this.authenticationService.currentUserId.subscribe(userId => {
+      this.currentUserId = userId
+      this.loadWallets()
+    })
+  }
+
+  loadWallets() {
+    this.walletService.getWalletsByUserId(this.currentUserId).subscribe((wallets: Wallet[]) => {
+      this.wallets = wallets;
+    });
+  }
+
   onSubmit(): void {
     const transaction = {
-      transaction_type_id: this.transactionType,
-      wallet_id: this.walletId,
-      amount: this.amount,
-      date: new Date().toISOString().split('T')[0],
+      sourceWalletId: this.walletId,
       note: this.note,
-      category_id: this.category_id
+      amount: this.amount,
+      transactionDate: new Date().toISOString().split('T')[0],
+      destinationWalletId: this.destinationWalletId,
+      categoryId: this.categoryId // Include categoryId in the transaction
     };
     console.log(transaction);
 

@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import {BalancePiechartComponent} from "../../../wallet/components/balance-piechart/balance-piechart.component";
-import {MatCardModule} from "@angular/material/card";
-import {BalanceDisplayComponent} from "../../../wallet/components/balance-display/balance-display.component";
-import {MatButton, MatIconButton} from "@angular/material/button";
-import {MatIcon} from "@angular/material/icon";
-import {ActivatedRoute, Router} from "@angular/router";
-import {SavingApiService} from "../../services/saving-api.service";
-import {Saving} from "../../model/saving.entity";
-import {SavingTransaction} from "../../model/saving-transaction.entity";
+import { BalancePiechartComponent } from "../../../wallet/components/balance-piechart/balance-piechart.component";
+import { MatCardModule } from "@angular/material/card";
+import { BalanceDisplayComponent } from "../../../wallet/components/balance-display/balance-display.component";
+import { MatButton, MatIconButton } from "@angular/material/button";
+import { MatIcon } from "@angular/material/icon";
+import { ActivatedRoute, Router } from "@angular/router";
+import { SavingApiService } from "../../services/saving-api.service";
+import { Saving } from "../../model/saving.entity";
+import { SavingTransaction } from "../../model/saving-transaction.entity";
 import { MatTableModule } from '@angular/material/table';
-import {MatProgressBar} from "@angular/material/progress-bar";
-import {DatePipe, NgIf} from "@angular/common";
-import {MatDialog} from "@angular/material/dialog";
-import {SavingDeleteComponent} from "../../components/saving-delete/saving-delete.component";
-import {SavingEditComponent} from "../../components/saving-edit/saving-edit.component";
+import { MatProgressBar } from "@angular/material/progress-bar";
+import { DatePipe, NgIf } from "@angular/common";
+import { MatDialog } from "@angular/material/dialog";
+import { SavingDeleteComponent } from "../../components/saving-delete/saving-delete.component";
+import { SavingEditComponent } from "../../components/saving-edit/saving-edit.component";
 
 @Component({
   selector: 'app-savings-detail',
@@ -28,14 +28,12 @@ import {SavingEditComponent} from "../../components/saving-edit/saving-edit.comp
     MatIcon,
     MatButton,
     MatProgressBar,
-      MatTableModule,
+    MatTableModule,
     NgIf,
     DatePipe,
-
-  ]
+  ],
 })
 export class SavingsDetailComponent implements OnInit {
-
   titles = [
     'Savings Goal',
     'Saved so far',
@@ -43,15 +41,10 @@ export class SavingsDetailComponent implements OnInit {
     'You need to save',
     'Period Income',
     'Period Expenses',
-    'Saving asdf'
+    'Saving asdf',
   ];
 
-  balances = [
-    2000,
-    -123,
-    4000,
-    345
-  ];
+  balances = [2000, -123, 4000, 345];
 
   saving: Saving | undefined;
   savingId: number | undefined;
@@ -65,28 +58,29 @@ export class SavingsDetailComponent implements OnInit {
       private dialog: MatDialog
   ) {}
 
-
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.savingId = Number(id);
       this.loadSaving();
+      this.loadSavingTransactions();
     }
-    this.loadSavingTransactions();
-
   }
 
   loadSavingTransactions(): void {
-    this.savingApiService.getSavingsTransactionsBySavingId(this.savingId).subscribe(
-        (data: SavingTransaction[]) => {
-          this.savingTransactions = data;
-        },
-        error => {
-          console.error('Error al cargar las transacciones de ahorro', error);
-        }
-    );
+    if (this.savingId) {
+      this.savingApiService.getSavingsTransactionsBySavingId(this.savingId).subscribe(
+          (data: SavingTransaction[]) => {
+            this.savingTransactions = data;
+          },
+          (error) => {
+            console.error('Error al cargar las transacciones de ahorro', error);
+          }
+      );
+    } else {
+      console.error('No se proporcionó un savingId válido');
+    }
   }
-
 
   loadSaving() {
     if (this.savingId) {
@@ -94,31 +88,32 @@ export class SavingsDetailComponent implements OnInit {
           (data: Saving) => {
             this.saving = data;
           },
-          error => {
+          (error) => {
             console.error('Error al cargar el ahorro', error);
           }
       );
     }
   }
 
-    openDeleteDialog(): void {
-        const dialogRef = this.dialog.open(SavingDeleteComponent, {
-            data: { savingId: this.savingId }
-        });
-
-        dialogRef.afterClosed().subscribe(result => {
-            if (result) {
-                console.log('Saving deleted from dialog');
-                this.router.navigate(['/savings']);
-            }
-        });
-    }
-  openEditDialog(saving: Saving) {
-    const dialogRef = this.dialog.open(SavingEditComponent, {
-      data: saving
+  openDeleteDialog(): void {
+    const dialogRef = this.dialog.open(SavingDeleteComponent, {
+      data: { savingId: this.savingId },
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        console.log('Saving deleted from dialog');
+        this.router.navigate(['/savings']).then();
+      }
+    });
+  }
+
+  openEditDialog(saving: Saving) {
+    const dialogRef = this.dialog.open(SavingEditComponent, {
+      data: saving,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         this.updateSaving(this.savingId, result);
       }
@@ -128,18 +123,18 @@ export class SavingsDetailComponent implements OnInit {
   updateSaving(id: number | undefined, saving: Saving) {
     if (id !== undefined) {
       this.savingApiService.updateSaving(saving).subscribe(
-          updatedSaving => {
+          (updatedSaving) => {
             console.log('Saving updated:', updatedSaving);
             this.loadSaving();
           },
-          error => {
+          (error) => {
             console.error('Error updating saving:', error);
           }
       );
     }
   }
+
   get hasTransactions(): boolean {
     return this.savingTransactions && this.savingTransactions.length > 0;
   }
 }
-

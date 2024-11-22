@@ -1,28 +1,28 @@
-
 export class Expense {
   id: number;
-  walletId: number;
-  amount: number;
-  category_id: number;
-  note: string;
-  date: string;
-  recurrent_id: number;
+  wallet: {
+    walletId: number;
+    name: string;
+    balance: number;
+  };
+  categoryName: string;
+  periodRecurrenceName: string;
 
   constructor(
-    id = 0,
-    walletId = 0,
-    amount = 0,
-    category_id = 0,
-    note = '',
-    date = '',
-    recurrent_id = 0
+      id = 0,
+      walletId = 0,
+      walletName = '',
+      walletBalance = 0,
+      categoryName = '',
+      periodRecurrenceName = ''
   ) {
     this.id = id;
-    this.walletId = walletId;
-    this.amount = amount;
-    this.category_id = category_id;
-    this.note = note;
-    this.date = date;
-    this.recurrent_id = recurrent_id;
+    this.wallet = {
+      walletId: walletId,
+      name: walletName,
+      balance: walletBalance,
+    };
+    this.categoryName = categoryName;
+    this.periodRecurrenceName = periodRecurrenceName;
   }
 }
