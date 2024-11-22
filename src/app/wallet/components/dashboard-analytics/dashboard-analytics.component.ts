@@ -27,6 +27,7 @@ import {WalletApiService} from "../../../shared/services/wallet-api.service";
   styleUrl: './dashboard-analytics.component.css'
 })
 export class DashboardAnalyticsComponent implements OnInit{
+  @Input() userId!: number;
   @Input() wallets!: Wallet[];
 
   totalBalance: number = 0;
@@ -40,15 +41,15 @@ export class DashboardAnalyticsComponent implements OnInit{
 
   ngOnInit(): void {
     this.expensesApiService.getExpensesByWalletId(312).subscribe((expenses: Expense[]) => {
-      this.periodExpense = expenses.reduce((acc, expense) => acc + expense.amount, 0);
+      //this.periodExpense = expenses.reduce((acc, expense) => acc + expense.amount, 0);
       this.periodChange -= this.periodExpense;
     });
     this.earningsApiService.getEarningsByWalletId(312).subscribe((earnings: Earning[]) => {
-      this.periodEarning = earnings.reduce((acc, earning) => acc + earning.amount, 0);
+     // this.periodEarning = earnings.reduce((acc, earning) => acc + earning.amount, 0);
       this.periodChange += this.periodEarning;
     });
 
-    this.walletApiService.getWalletsByUserId(1).subscribe((wallets: Wallet[]) => {
+    this.walletApiService.getWalletsByUserId(this.userId).subscribe((wallets: Wallet[]) => {
         this.totalBalance = wallets.reduce((acc, wallet) => acc + wallet.balance, 0);
     });
 

@@ -31,22 +31,19 @@
                     </div>
                     <div>
                         <button mat-button matStepperPrevious>Back</button>
-                        <button mat-button matStepperNext (click)="createAccount()">Next</button>
+                        <button mat-button matStepperNext (click)="onSubmit()">Next</button>
                     </div>
                 </form>
             </mat-step>
             <mat-step>
                 <ng-template matStepLabel>Done</ng-template>
-                <p>You have registered!</p>
-                <div>
-                    <button mat-button (click)="redirectSignIn()">Sign-in</button>
-                </div>
+                <p>You have registered! Redirecting...</p>
             </mat-step>
         </mat-stepper>
         <div class="spacer"></div>
         <div>
             <p>Already have an account?</p>
-            <button mat-button (click)="redirectSignIn()">
+            <button mat-button routerLink="/sign-in">
                 Sign-in
             </button>
         </div>

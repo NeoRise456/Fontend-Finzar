@@ -1,22 +1,24 @@
-<header>
-  <mat-toolbar style="position: fixed; top: 0; left:0; z-index: 1;">
-    <span>Finzar</span>
-    <span style="flex: 1 1 auto"></span>
-    <div>
-      <button mat-button routerLink="/dashboard">Wallets</button>
-      <button mat-button routerLink="/savings">Savings</button>
-    </div>
-    <span style="flex: 1 1 auto"></span>
-    <button mat-button [matMenuTriggerFor]="user">
-      <span style="display: flex; align-items: center; justify-content: space-between; width: 100%">
-        <mat-icon>person</mat-icon>
-        <span class="user-text">User</span>
-      </span>
-    </button>
-    <mat-menu #user="matMenu">
-      <button mat-menu-item>Settings</button>
-      <button mat-menu-item>Support</button>
-      <button mat-menu-item (click)="logOut()">Logout</button>
-    </mat-menu>
-  </mat-toolbar>
-</header>
+<div *ngIf="isSignedIn; then authenticated else anonymous"></div>
+<ng-template #authenticated>
+    <mat-toolbar style="position: fixed; top: 0; left:0; z-index: 1;">
+        <span>Finzar</span>
+        <span style="flex: 1 1 auto"></span>
+        <div>
+            <button mat-button routerLink="/dashboard">Wallets</button>
+            <button mat-button routerLink="/savings">Savings</button>
+        </div>
+        <span style="flex: 1 1 auto"></span>
+        <button mat-button [matMenuTriggerFor]="user">
+            <span style="display: flex; align-items: center; justify-content: space-between; width: 100%">
+                <mat-icon>person</mat-icon>
+                <span class="user-text">{{ currentUserName }}</span>
+            </span>
+        </button>
+        <mat-menu #user="matMenu">
+            <button mat-menu-item>Settings</button>
+            <button mat-menu-item>Support</button>
+            <button mat-menu-item (click)="logOut()">Logout</button>
+        </mat-menu>
+    </mat-toolbar>
+</ng-template>
+<ng-template #anonymous></ng-template>

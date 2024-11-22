@@ -1,23 +1,22 @@
-
-
 export class Saving {
   id: number;
   userId: number;
   name: string;
-  totalGoal: number ;
+  totalGoal: number;
   currentAmount: number;
   categoryId: number;
   startDate: Date;
   endDate: Date;
+
   constructor(
-    id = 0,
-    userId = 0,
-    name = '',
-    totalGoal = 0,
-    currentAmount = 0,
-    categoryId = 0,
-    startDate = new Date(),
-    endDate = new Date()
+      id = 0,
+      userId = 0,
+      name = '',
+      totalGoal = 0,
+      currentAmount = 0,
+      categoryId = 0,
+      startDate = new Date(),
+      endDate = new Date()
   ) {
     this.id = id;
     this.userId = userId;
@@ -27,5 +26,13 @@ export class Saving {
     this.categoryId = categoryId;
     this.startDate = startDate;
     this.endDate = endDate;
+  }
+
+  getFormattedStartDate(): string {
+    return this.startDate.toISOString().split('T')[0];
+  }
+
+  getFormattedEndDate(): string {
+    return this.endDate.toISOString().split('T')[0];
   }
 }

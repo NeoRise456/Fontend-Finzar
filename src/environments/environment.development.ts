@@ -1,4 +1,5 @@
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:3000'
+    // Server Base Path for REST API
+  serverBasePath: 'http://localhost:8090/api/v1'
 };
