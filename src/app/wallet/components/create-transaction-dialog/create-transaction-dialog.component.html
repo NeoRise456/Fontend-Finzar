@@ -2,11 +2,11 @@
 <mat-dialog-content>
     <form>
         <mat-form-field appearance="fill" style="padding: 5px;">
-            <mat-label>Transaction Type</mat-label>
-            <mat-select required [(ngModel)]="transactionType" name="transactionType">
-                <mat-option value="1">Income</mat-option>
-                <mat-option value="2">Expense</mat-option>
-                <mat-option value="3">Transfer</mat-option>
+            <mat-label>Destination Wallet</mat-label>
+            <mat-select required [(ngModel)]="destinationWalletId" name="destinationWalletId">
+                <mat-option *ngFor="let wallet of wallets" [value]="wallet.id">
+                    {{ wallet.name }}
+                </mat-option>
             </mat-select>
         </mat-form-field>
 
@@ -21,19 +21,20 @@
         </mat-form-field>
 
         <mat-form-field appearance="fill" style="padding: 5px;">
-            <mat-label>By Category</mat-label>
-            <mat-select required [(ngModel)]="category_id" name="category_id">
+            <mat-label>Category</mat-label>
+            <mat-select required [(ngModel)]="categoryId" name="categoryId">
                 <mat-option *ngFor="let category of categories" [value]="category.id">
                     {{ category.name }}
                 </mat-option>
             </mat-select>
         </mat-form-field>
+
     </form>
 </mat-dialog-content>
 
 <mat-dialog-actions>
     <button mat-button (click)="close()">Close</button>
-    <button mat-button (click)="onSubmit()" [disabled]="!transactionType || amount <= 0 || !note || !category_id">
+    <button mat-button (click)="onSubmit()" [disabled]="amount <= 0 || !note || !destinationWalletId || !categoryId">
         Create Transaction
     </button>
 </mat-dialog-actions>

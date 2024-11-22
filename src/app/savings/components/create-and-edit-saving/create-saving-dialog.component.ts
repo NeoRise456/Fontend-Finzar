@@ -12,6 +12,7 @@ import {MatRadioModule} from "@angular/material/radio";
 import {EventEmitter} from "@angular/core";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
+import {AuthenticationService} from "../../../iam/services/authentication.service";
 
 @Component({
   selector: 'app-create-and-edit-saving',
@@ -29,7 +30,7 @@ export class CreateSavingDialogComponent {
   categories: Category[];
   dateRangeForm!: FormGroup;
 
-  constructor(private dialogRef: MatDialogRef<CreateSavingDialogComponent>,
+  constructor(private dialogRef: MatDialogRef<CreateSavingDialogComponent>, private authenticationService: AuthenticationService,
               private categoryApiService: CategoryApiService, private fb: FormBuilder
   ) {
     this.newSaving = new Saving();
@@ -54,8 +55,9 @@ export class CreateSavingDialogComponent {
   }
 
   onSubmit() {
-    this.newSaving.userId = 1; // Hardcoded user id
-
+  this.authenticationService.currentUserId.subscribe(userId => {
+    this.newSaving.userId = userId;
+  });
 
     this.newSaving.startDate = new Date(this.dateRangeForm.value.start);
     this.newSaving.endDate = new Date(this.dateRangeForm.value.end);

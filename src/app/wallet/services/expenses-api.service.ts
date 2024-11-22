@@ -11,7 +11,7 @@ export class ExpensesApiService extends BaseService<Expense> {
 
   //get expenses by wallet id
   getExpensesByWalletId(walletId: any): Observable<Expense[]> {
-    return this.http.get<Expense[]>(`${this.basePath}${this.resourceEndpoint}?walletId=${walletId}`, this.httpOptions)
+    return this.http.get<Expense[]>(`${this.basePath}${this.resourceEndpoint}/${walletId}`, this.httpOptions)
       .pipe(catchError(this.handleError));
   }
 

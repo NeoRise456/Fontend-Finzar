@@ -12,7 +12,7 @@ export class SavingApiService extends BaseService<Saving> {
 
   //get savings by user id
   getSavingsByUserId(userId: any) {
-    return this.http.get<Saving[]>(`${this.basePath}${this.resourceEndpoint}?userId=${userId}`, this.httpOptions)
+    return this.http.get<Saving[]>(`${this.basePath}${this.resourceEndpoint}/user/${userId}`, this.httpOptions)
       .pipe(catchError(this.handleError));
   }
 
