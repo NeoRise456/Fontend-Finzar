@@ -41,11 +41,11 @@ export class DashboardAnalyticsComponent implements OnInit{
 
   ngOnInit(): void {
     this.expensesApiService.getExpensesByWalletId(312).subscribe((expenses: Expense[]) => {
-      this.periodExpense = expenses.reduce((acc, expense) => acc + expense.amount, 0);
+      //this.periodExpense = expenses.reduce((acc, expense) => acc + expense.amount, 0);
       this.periodChange -= this.periodExpense;
     });
     this.earningsApiService.getEarningsByWalletId(312).subscribe((earnings: Earning[]) => {
-      this.periodEarning = earnings.reduce((acc, earning) => acc + earning.amount, 0);
+     // this.periodEarning = earnings.reduce((acc, earning) => acc + earning.amount, 0);
       this.periodChange += this.periodEarning;
     });
 
