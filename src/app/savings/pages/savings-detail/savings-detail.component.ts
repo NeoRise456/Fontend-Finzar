@@ -103,7 +103,7 @@ export class SavingsDetailComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         console.log('Saving deleted from dialog');
-        this.router.navigate(['/savings']);
+        this.router.navigate(['/savings']).then();
       }
     });
   }
