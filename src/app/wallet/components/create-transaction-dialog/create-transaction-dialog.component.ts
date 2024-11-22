@@ -27,6 +27,7 @@ export class CreateTransactionDialogComponent {
   amount: number = 0;
   destinationWalletId: number = 0;
   currentUserId: number = 0;
+  categoryId: number = 0;
   wallets: Wallet[] = [];
 
   constructor(private dialogRef: MatDialogRef<CreateTransactionDialogComponent>,
@@ -55,7 +56,8 @@ export class CreateTransactionDialogComponent {
       note: this.note,
       amount: this.amount,
       transactionDate: new Date().toISOString().split('T')[0],
-      destinationWalletId: this.destinationWalletId
+      destinationWalletId: this.destinationWalletId,
+      categoryId: this.categoryId // Include categoryId in the transaction
     };
     console.log(transaction);
 

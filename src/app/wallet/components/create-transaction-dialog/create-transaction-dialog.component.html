@@ -20,12 +20,21 @@
             <input matInput [(ngModel)]="note" name="note" />
         </mat-form-field>
 
+        <mat-form-field appearance="fill" style="padding: 5px;">
+            <mat-label>Category</mat-label>
+            <mat-select required [(ngModel)]="categoryId" name="categoryId">
+                <mat-option *ngFor="let category of categories" [value]="category.id">
+                    {{ category.name }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
     </form>
 </mat-dialog-content>
 
 <mat-dialog-actions>
     <button mat-button (click)="close()">Close</button>
-    <button mat-button (click)="onSubmit()" [disabled]="amount <= 0 || !note || !destinationWalletId">
+    <button mat-button (click)="onSubmit()" [disabled]="amount <= 0 || !note || !destinationWalletId || !categoryId">
         Create Transaction
     </button>
 </mat-dialog-actions>
