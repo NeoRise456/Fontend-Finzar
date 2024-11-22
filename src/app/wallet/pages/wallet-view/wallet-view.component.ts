@@ -86,7 +86,7 @@ export class WalletViewComponent implements OnInit {
       this.periodExpense = expenses.reduce((acc, expense) => acc + expense.amount, 0);
       this.periodChange -= this.periodExpense;
     });
-    this.transactionsApiService.getTransactionsByWalletId(312).subscribe(transactions => {
+    this.transactionsApiService.getTransactionsByWalletId(this.walletId).subscribe(transactions => {
       this.transactions = transactions;
     });
     this.categoryApiService.getAllCategories().subscribe(categories => {
